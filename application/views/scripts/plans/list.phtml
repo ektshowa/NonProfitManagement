@@ -1,0 +1,30 @@
+<h2>Current Plans</h2>
+<?php if($this->entries != null) {?>
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Plan Name</th>
+		<th>Description</th>
+	</tr>
+	<?php 
+		foreach ($this->entries as $entry):
+	?>
+	<tr>
+	<td class="links">
+		<a href='/plans/update/id/<?php echo $this->escape($entry->id);?>'>Edit</a>
+		<a href='/plans/delete/id/<?php echo $this->escape($entry->id);?>'>Delete</a>
+	</td>
+	<td><?php 
+			echo $this->escape($entry->planName)
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->description) 
+		?>
+	</td>
+</tr>
+<?php endforeach ?>
+</table>
+<?php } else {?>
+<p>There is not any plan.</p>
+<?php }?>
+<p><a href='/plans/create'>Create a new plan</a></p>

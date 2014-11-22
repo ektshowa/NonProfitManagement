@@ -1,0 +1,35 @@
+<h2>Clients Needs</h2>
+<?php  if($this->entries != null) {?>
+
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Client Name</th>
+		<th>Service Code</th>
+		<th>Comments</th>
+	</tr>
+	<?php 
+		foreach ($this->entries as $entry):
+	?>
+	<tr>
+	<td class="links">
+		<a href='/services/update/id/<?php echo $this->escape($entry->id);?>'>Update</a>
+		<a href='/services/delete/id/<?php echo $this->escape($entry->id);?>'>Delete</a>
+	</td>
+	<td><?php
+			echo $this->escape($entry->clientName) 
+		?>
+	</td>
+	<td><?php 
+			echo $this->escape($entry->serviceCode)
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->comments) 
+		?>
+	</td>	
+</tr>
+<?php endforeach ?>
+</table>
+<?php } else {?>
+<p>There is not any client need.</p>
+<?php }?>

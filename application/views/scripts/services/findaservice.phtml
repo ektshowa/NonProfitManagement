@@ -1,0 +1,19 @@
+<h2>Find a service</h2>
+<p>To Find a service enter the service code in this form and click submit...</p>
+<?php echo $this->form; ?>
+
+<script type="text/javascript">
+	var getSelectedValue = function(){
+		var $select = jQuery("#selectService");
+
+		var $selectedValue;
+		for (var i = 0; i < $select.options.length; i++){
+			if ($select.options[i].selected){
+				$selectedValue = $select.options[i].value;
+			}
+		}
+		return $selectedValue;
+	};
+	jQuery(document).ready(function(){ alert("jquery running"); });
+</script>
+

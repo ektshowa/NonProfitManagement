@@ -1,0 +1,152 @@
+<h2>Current Clients</h2>
+<?php if($this->entries != null) {?>
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Action</th>
+		<th>Last Name</th>
+		<th>First Name</th>
+		<th>Middle Name</th>
+		<th>Date of Birth</th>
+		<th>Street</th>
+		<th>City</th>
+		<th>Home Type</th>
+		<th>Home Phone</th>
+		<th>Cell Phone</th>
+		<th>Work Phone</th>
+		<th>Email</th>
+		<th>Household Size</th>
+		<th>Gender</th>
+		<th>Marital Status</th>
+		<th>Is Dependent</th>
+		<th>SSN</th>
+		<th>Languages Spoken</th>
+		<th>Country of Origin</th>
+		<th>Immigration Status</th>
+		<th>Date of Arrival</th>
+		<th>Date of Intake</th>
+		<th>Alien Number</th>
+		<th>Contact Name</th>
+		<th>Contact Phone</th>
+		<th>Phone Type</th>
+		<th>Relationship</th>
+	</tr>
+	<?php 
+		foreach ($this->entries as $entry):
+	?>
+	<tr>
+	<td class="links">
+		<a href='/clients/update/id/<?php echo $this->escape($entry->id);?>'>Update</a>
+		<a href='/clients/delete/id/<?php echo $this->escape($entry->id);?>'>Delete</a>
+	</td>
+	<td><?php 
+			echo $this->escape($entry->lastName)
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->firstName) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->middlename) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->email) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->street) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->city) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->homeType) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->homePhone) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->cellPhone) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->workPhone) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->email) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->houseHoldSize) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->gender) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->maritalStatus) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->isDependent) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->ssn) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->languageSpoken) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->countryOfOrigin) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->immigrationStatus) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->dateOfArrival) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->dateOfIntake) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->alienNumber) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->emergencyContactName) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->contactPhone) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->contactPhoneType) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->contactRelationship) 
+		?>
+	</td>
+	</tr>	
+	<?php endforeach ?>	
+</table>
+<?php } else {?>
+<p>There is not any clients.</p>
+<?php }?>
+<p><a href='/clients/create'>Create a new client</a></p>
+

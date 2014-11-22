@@ -1,0 +1,46 @@
+<h2>Offered Services</h2>
+<?php  if($this->entries != null) {?>
+
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Service Code</th>
+		<th>Service Category</th>
+		<th>Description</th>
+		<th>Plan</th>
+	</tr>
+	<?php 
+		foreach ($this->entries as $entry):
+	?>
+	<tr>
+	<td class="links">
+		<a href='/services/update/id/<?php echo $this->escape($entry->id);?>'>Update</a>
+		<a href='/services/delete/id/<?php echo $this->escape($entry->id);?>'>Delete</a>
+	</td>
+	<td><?php 
+			echo $this->escape($entry->serviceCode)
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->serviceCategory) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->description) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->planName) 
+		?>
+	</td>	
+	<td><?php
+			echo $this->escape($entry->planId) 
+		?>
+	</td>
+	
+</tr>
+<?php endforeach ?>
+</table>
+<?php } else {?>
+<p>There is not any client.</p>
+<?php }?>
+<p><a href='/services/create'>Create a new Service</a></p>

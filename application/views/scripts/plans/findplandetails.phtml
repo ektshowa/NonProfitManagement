@@ -1,0 +1,64 @@
+<h2>Plan Details</h2>
+
+<?php if($this->planEntry != null) {?>
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		
+		<th>Plan Name</th>
+		<th>Description</th>
+	</tr>
+	<?php 
+		foreach ($this->planEntry as $entry):
+	?>
+	<tr>
+		<td class="links">
+			<a href='/clients/update/planName/<?php echo $this->escape($entry['planName']);?>'>Update</a>
+			<a href='/clients/delete/planName/<?php echo $this->escape($entry['planName']);?>'>Delete</a>
+		</td>
+		<td><?php 
+				echo $this->escape($entry['planName']);
+			?>
+		</td>
+		<td><?php
+				echo $this->escape($entry['description']); 
+			?>
+		</td>
+	</tr>	
+	<?php endforeach ?>	
+</table>
+<?php }?>
+
+<p>The services available in that Plan are listed below</p>
+
+<?php if($this->servicesEntries != null) {?>
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Service Code</th>
+		<th>Service Category</th>
+		<th>Description</th>
+	</tr>
+	<?php 
+		foreach ($this->servicesEntries as $entry):
+	?>
+	<tr>
+		<td>
+			<?php
+				echo $this->escape($entry['serviceCode']); 
+			?>
+		</td>
+		<td>
+			<?php
+				echo $this->escape($entry['serviceCategory']); 
+			?>
+		</td>
+		<td>
+			<?php
+				echo $this->escape($entry['description']); 
+			?>
+		</td>
+	</tr>
+	<?php endforeach ?>
+</table>	
+<?php } else {?>
+<p>There is no services recorded for this plan</p>
+<?php }?>

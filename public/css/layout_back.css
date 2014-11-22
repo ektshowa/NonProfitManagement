@@ -1,0 +1,87 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-size: 12px;
+	
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	padding: .5em;
+	font-size: 1.2em;
+}
+
+#pageWrapper {
+	background: #e1ebec;
+	width: 95em;
+	margin: 1em auto;
+	padding: .5em;
+}
+
+#header {
+	background: #fff;
+	height: 7.5em;
+	margin: 0 0 .5em 0;
+}
+
+#nav {
+	background: #fff;
+	height: 4em;
+	margin: 0 0 .5em 0;
+}
+
+#nav #mainMenu li {
+	border-bottom: 1px solid #214384;
+	text-align: center;
+	width: 100%;
+	display: inline;
+}
+
+#nav #mainMenu li a{
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#sidebar {
+	background: #ccc;
+	float: right;
+	width: 17em;
+	height: 40em;
+	margin: 7em 0 .5em .5em;
+	padding: .5em;
+}
+
+#main {
+	background: #fff;
+	height: 55em;
+	margin: 0 0 .5em 0;
+	padding-left: 1.5em;
+	overflow: scroll;
+	font-size: 1em;
+}
+
+#subNav, #adminMenu, #userForm {
+	background: #fff;
+	width: 17em;
+	height: 13em;
+	margin: 0 0 .5em 0;
+}
+
+.spreadsheet tr td { 
+	border: 1px solid black; 
+}
+
+.spreadsheet tr.a {
+	background: yellow;
+}
+
+#footer {
+	clear: both;
+	background: #fff;
+	height: 2.5em;
+	margin: 0;
+}

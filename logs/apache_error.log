@@ -1,0 +1,33 @@
+[Mon Apr 16 20:36:18 2012] [error] [client 127.0.0.1] PHP Fatal error:  Uncaught exception 'Zend_Config_Exception' with message 'simplexml_load_file() [<a href='function.simplexml-load-file'>function.simplexml-load-file</a>]: I/O warning : failed to load external entity &quot;./skins//skin.xml&quot;' in C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Config\\Xml.php:108\nStack trace:\n#0 C:\\Wamp\\www\\ManageNonProfit\\application\\views\\helpers\\LoadSkin.php(8): Zend_Config_Xml->__construct('./skins//skin.x...')\n#1 [internal function]: Zend_View_Helper_LoadSkin->loadSkin(NULL)\n#2 C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View\\Abstract.php(350): call_user_func_array(Array, Array)\n#3 C:\\Wamp\\www\\ManageNonProfit\\application\\layouts\\scripts\\layout.phtml(14): Zend_View_Abstract->__call('loadSkin', Array)\n#4 C:\\Wamp\\www\\ManageNonProfit\\application\\layouts\\scripts\\layout.phtml(14): Zend_View->loadSkin(NULL)\n#5 C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View.php(108): include('C:\\Wamp\\www\\Man...')\n#6 C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View\\Abstract.php(888): Zend_View->_run('C:\\Wamp\\www\\Man...')\n#7  in C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Controller\\Plugin\\Broker.php on line 336
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function toArray() on a non-object in C:\\Wamp\\www\\ManageNonProfit\\application\\views\\helpers\\LoadSkin.php on line 9
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP Stack trace:
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   1. {main}() C:\\Wamp\\www\\ManageNonProfit\\public\\index.php:0
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   2. Zend_Application->run() C:\\Wamp\\www\\ManageNonProfit\\public\\index.php:26
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Application.php:366
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   4. Zend_Controller_Front->dispatch() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Application\\Bootstrap\\Bootstrap.php:97
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   5. Zend_Controller_Plugin_Broker->postDispatch() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Controller\\Front.php:965
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   6. Zend_Layout_Controller_Plugin_Layout->postDispatch() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Controller\\Plugin\\Broker.php:333
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   7. Zend_Layout->render() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Layout\\Controller\\Plugin\\Layout.php:143
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   8. Zend_View_Abstract->render() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Layout.php:796
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP   9. Zend_View->_run() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View\\Abstract.php:888
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP  10. include() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View.php:108
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP  11. Zend_View->loadSkin() C:\\Wamp\\www\\ManageNonProfit\\application\\layouts\\scripts\\layout.phtml:14
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP  12. Zend_View_Abstract->__call() C:\\Wamp\\www\\ManageNonProfit\\application\\layouts\\scripts\\layout.phtml:14
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP  13. call_user_func_array() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View\\Abstract.php:350
+[Tue Apr 17 21:39:34 2012] [error] [client 127.0.0.1] PHP  14. Zend_View_Helper_LoadSkin->loadSkin() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View\\Abstract.php:350
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP Fatal error:  Call to a member function toArray() on a non-object in C:\\Wamp\\www\\ManageNonProfit\\application\\views\\helpers\\LoadSkin.php on line 9
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP Stack trace:
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   1. {main}() C:\\Wamp\\www\\ManageNonProfit\\public\\index.php:0
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   2. Zend_Application->run() C:\\Wamp\\www\\ManageNonProfit\\public\\index.php:26
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   3. Zend_Application_Bootstrap_Bootstrap->run() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Application.php:366
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   4. Zend_Controller_Front->dispatch() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Application\\Bootstrap\\Bootstrap.php:97
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   5. Zend_Controller_Plugin_Broker->postDispatch() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Controller\\Front.php:965
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   6. Zend_Layout_Controller_Plugin_Layout->postDispatch() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Controller\\Plugin\\Broker.php:333
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   7. Zend_Layout->render() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Layout\\Controller\\Plugin\\Layout.php:143
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   8. Zend_View_Abstract->render() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\Layout.php:796
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP   9. Zend_View->_run() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View\\Abstract.php:888
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP  10. include() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View.php:108
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP  11. Zend_View->loadSkin() C:\\Wamp\\www\\ManageNonProfit\\application\\layouts\\scripts\\layout.phtml:14
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP  12. Zend_View_Abstract->__call() C:\\Wamp\\www\\ManageNonProfit\\application\\layouts\\scripts\\layout.phtml:14
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP  13. call_user_func_array() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View\\Abstract.php:350
+[Wed Apr 18 19:53:34 2012] [error] [client 127.0.0.1] PHP  14. Zend_View_Helper_LoadSkin->loadSkin() C:\\Wamp\\www\\ManageNonProfit\\library\\Zend\\View\\Abstract.php:350

@@ -1,0 +1,42 @@
+<h2>Current Users</h2>
+<?php  if($this->entries != null) {?>
+
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Last Name</th>
+		<th>First Name</th>
+		<th>Middle Name</th>
+		<th>Email</th>
+		<th>Username</th>
+	</tr>
+	<?php 
+		foreach ($this->entries as $entry):
+	?>
+	<tr class="<?php print ($this->partialCounter % 2 == 0) ? 'a' : ''; ?>">
+	<td class="links">
+		<a href='/users/update/id/<?php echo $this->escape($entry->id);?>'>Update</a>
+		<a href='/users/delete/id/<?php echo $this->escape($entry->id);?>'>Delete</a>
+	</td>
+	<td><?php 
+			echo $this->escape($entry->lastName)
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->firstName) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->email) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->username) 
+		?>
+	</td>	
+</tr>
+<?php $this->partialCounter += 1;  endforeach ?>
+</table>
+<?php } else {?>
+<p>There is not any user.</p>
+<?php }?>
+<p><a href='/user/create'>Create a new user</a></p>

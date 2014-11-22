@@ -1,0 +1,37 @@
+<h2>Client Details</h2>
+
+<?php if($this->clientEntry != null) {?>
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Service Code</th>
+		<th>Service Category</th>
+		<th>Description</th>
+		<th>Plan Name</th>
+	</tr>
+	<?php 
+		foreach ($this->serviceEntry as $entry):
+	?>
+	<tr>
+	<td><?php 
+			echo $this->escape($entry['serviceCode']);
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['serviceCategory']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['description']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['planName']); 
+		?>
+	</td>
+  </tr>	
+	<?php endforeach ?>	
+</table>	
+<?php } else {?>
+<p>No service found</p>
+<?php }?>
+

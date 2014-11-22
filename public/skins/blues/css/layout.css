@@ -1,0 +1,69 @@
+@CHARSET "ISO-8859-1";
+
+body {
+	font-size: 10px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	padding: .5em;
+	font-size: 1.2em;
+}
+
+#pageWrapper {
+	background: #fff;
+	width: 95em;
+	margin: 1em auto;
+	padding: .5em;
+	border: #749BCE 1px solid;
+	-moz-border-radius: 5px;
+}
+
+#header {
+	height: 5em;
+	padding: 1em 2em;
+}
+
+#nav {
+/*	background: #fff;*/
+	height: 2.5em;
+	margin: 0 0 .5em 0;
+	padding: .5em 0;
+	border-top: #FD9421 1px solid;
+}
+
+#sidebar {
+	background: #ccc;
+	float: right;
+	width: 17em;
+	height: 40em;
+	margin: 7em 0 .5em .5em;
+	padding: .5em;
+}
+
+#main {
+	/*background: yellow*/;
+	height: 55em;
+	margin: 0 0 .5em 0;
+	padding: 2em;
+	overflow: scroll;
+}
+
+#subNav, #adminMenu, #userForm {
+	/*background: #fff*/;
+	width: 17em;
+	height: 10em;
+	margin: 0 0 .5em 0;
+}
+
+#footer {
+	clear: both;
+	text-align: center;
+	font-style: italic;
+	height: 2.5em;
+	margin: 0;
+}

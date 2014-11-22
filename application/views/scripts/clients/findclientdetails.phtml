@@ -1,0 +1,221 @@
+<h2>Client Details</h2>
+
+<?php if($this->clientEntry != null) {?>
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Last Name</th>
+		<th>First Name</th>
+		<th>Middle Name</th>
+		<th>Date of Birth</th>
+		<th>Street</th>
+		<th>City</th>
+		<th>Email</th>
+		<th>Alien Number</th>
+		<th>Gender</th>
+		<th>Marital Status</th>
+		<th>Household Size</th>
+		<th>Home Type</th>
+		<th>Date of Intake</th>
+		<th>Immigration Status</th>
+		<th>Country of Origin</th>
+		<th>Languages Spoken</th>
+		<th>Date of Arrival</th>
+		<th>Home Phone</th>
+		<th>Cell Phone</th>
+		<th>Work Phone</th>
+		<th>Home Type</th>
+		<th>Contact Name</th>
+		<th>Relationship</th>
+		<th>Contact Phone</th>
+		<th>Phone Type</th>	
+	</tr>
+	<?php 
+		foreach ($this->clientEntry as $entry):
+	?>
+	<tr>
+	<td><?php 
+			echo $this->escape($entry['lastName']);
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['firstName']); 
+		?>
+	</td>
+	<td><?php
+	//		echo $this->$entry['middlename']; 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['dateOfBirth']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['street']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['city']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['email']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['street']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['city']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['gender']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['maritalStatus']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['houseHoldSize']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['homeType']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['dateOfIntake']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['immigrationStatus']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['countryOfOrigin']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['languageSpoken']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['dateOfArrival']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['homePhone']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['cellPhone']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['workPhone']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['emergencyContactName']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['contactRelationship']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['contactPhone']); 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry['contactPhoneType']); 
+		?>
+	</td>
+	
+	</tr>	
+	<?php endforeach ?>	
+</table>
+
+<p>The clients needs are listed below</p>
+
+<?php // echo "my needsEntries"; echo $this->needsEntries; ?>
+<?php if($this->needsEntries != null) {?>
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Service Code</th>
+		<th>Comments</th>
+	</tr>
+	<?php 
+		foreach ($this->needsEntries as $entry):
+	?>
+	<tr>
+		<td>
+			<?php
+				echo $this->escape($entry['serviceCode']); 
+			?>
+		</td>
+		<td>
+			<?php
+				echo $this->escape($entry['comments']); 
+			?>
+		</td>
+	</tr>
+	<?php endforeach ?>
+</table>	
+<?php } else {?>
+<p>There is no need recorded for this client</p>
+<?php }?>
+
+<p>The clients follow up actions are listed below</p>
+
+<?php if($this->followupEntries != null) {?>
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Plan Name</th>
+		<th>Case Manager</th>
+		<th>Action Taken</th>
+		<th>Date of Action</th>
+		<th>Comments</th>
+	</tr>
+	<?php 
+		foreach ($this->followupEntries as $entry):
+	?>
+	<tr>
+		<td>
+			<?php
+				echo $this->escape($entry['planName']); 
+			?>
+		</td>
+		<td>
+			<?php
+				echo $this->escape($entry['casemanagerName']); 
+			?>
+		</td>
+		<td>
+			<?php
+				echo $this->escape($entry['actionTaken']); 
+			?>
+		</td>
+		<td>
+			<?php
+				echo $this->escape($entry['dateOfAction']); 
+			?>
+		</td>
+		<td>
+			<?php
+				echo $this->escape($entry['comments']); 
+			?>
+		</td>
+	</tr>
+	<?php endforeach ?>
+</table>	
+<?php } else {?>
+<p>There is no follow up action recorded for this client</p>
+<?php }?>
+
+
+<?php } else {?>
+<p>There is not any clients.</p>
+<?php }?>

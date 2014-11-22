@@ -1,0 +1,68 @@
+<?php 
+	//$this->layout()->content;
+	echo '<?xml version="1.0" encoding="UTF-8" ?>';
+	echo $this->doctype();
+	$this->layout()->userForm = $this->action('index', 'user');
+?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<?php 
+			echo $this->headTitle();
+			echo $this->headScript();
+			$this->headLink()->appendStylesheet('/css/menuStyle.css');
+			$this->headLink()->appendStylesheet('/css/layout.css');
+			//$this->loadSkin($this->skin);
+			echo $this->headLink();
+		?>
+    	<?php echo $this->jQuery(); ?>
+		
+	</head>
+	
+	<body>
+		<div id="pageWrapper">
+			<div id="header">
+				<h1>ECaseManagement</h1>
+			</div>
+			<div id="nav">
+				<ul id="css3menu1" class="topmenu">
+					<li class="topfirst"><a href="http://managenonprofit.local:8080">Home</a></li>
+					<li class="topmenu"><a href="#" style="height:15px;line-height:15px;"><span>Add Records</span></a>
+						<ul>
+							<li class="subfirst"><a href="http://managenonprofit.local:8080/clients">Clients</a></li>
+							<li><a href="http://managenonprofit.local:8080/plans">Plans</a></li>
+							<li><a href="http://managenonprofit.local:8080/services">Services</a></li>
+							<li><a href="http://managenonprofit.local:8080/casemanagers">Case Managers</a></li>
+						</ul>
+					</li>
+					<li class="topmenu"><a href="#" style="height:15px;line-height:15px;"><span>Lists Records</span></a>
+						<ul>
+							<li class="subfirst"><a href="#">Clients</a></li>
+							<li><a href="#">Plans</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="#">Case Managers</a></li>
+						</ul>
+					</li>
+					<li class="toplast"><a href="#" style="height:15px;line-height:15px;">Reports</a></li>
+				</ul>
+			</div>
+			<div id="sidebar">
+				<div id="subNav">
+					<?php echo $this->layout()->subNav;?>&nbsp; 	
+				</div>
+				<div id="adminMenu">
+					<?php echo $this->layout()->adminMenu; ?>&nbsp;
+				</div>
+				<div id="userForm">
+					<?php echo $this->layout()->userForm; ?>&nbsp;
+				</div>
+			</div>
+			<div id="main">
+				<?php echo $this->layout()->content; ?>&nbsp;
+			</div>
+			<div id="footer">
+				<p><em>Powered by Website Consultant Small Business</em></p>
+			</div>
+		</div>
+	</body>
+</html>

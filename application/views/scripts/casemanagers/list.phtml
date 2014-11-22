@@ -1,0 +1,41 @@
+<h2>Current Case Managers</h2>
+<?php  if($this->entries != null) {?>
+
+<table class='spreadsheet' cellpadding='0' cellspacing='0'>
+	<tr>
+		<th>Last Name</th>
+		<th>First Name</th>
+		<th>Middle Name</th>
+		<th>Email</th>
+	</tr>
+	<?php 
+		foreach ($this->entries as $entry):
+	?>
+	<tr>
+	<td class="links">
+		<a href='/casemanagers/update/id/<?php echo $this->escape($entry->id);?>'>Update</a>
+		<a href='/casemanagers/delete/id/<?php echo $this->escape($entry->id);?>'>Delete</a>
+	</td>
+	<td><?php 
+			echo $this->escape($entry->lastName)
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->firstName) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->middlename) 
+		?>
+	</td>
+	<td><?php
+			echo $this->escape($entry->email) 
+		?>
+	</td>
+	<?php endforeach ?>	
+</tr>
+</table>
+<?php } else {?>
+<p>There is not any user.</p>
+<?php }?>
+<p><a href='/casemanagers/create'>Create a new case manager</a></p>
