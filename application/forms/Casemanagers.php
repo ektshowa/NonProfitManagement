@@ -8,11 +8,19 @@ class Application_Form_Casemanagers extends ZendX_JQuery_Form
     	$this->setMethod('post');
     	
         // create a new element
+        /* Record ID hidden field */
         $id = $this->createElement('hidden', 'id');
         // element options
         $id->setDecorators(array('ViewHelper'));
         // add the element to the form
         $this->addElement($id);
+    	
+        /* UserID hidden field */
+        $userID = $this->createElement('hidden', 'userID');
+        // element options
+        $userID->setDecorators(array('ViewHelper'));
+        // add the element to the form
+        $this->addElement($userID);
     	
         /* First name textbox element */
     	$firstName = $this->createElement('text', 'firstName');
@@ -66,7 +74,7 @@ class Application_Form_Casemanagers extends ZendX_JQuery_Form
         				)
 		);
 		
-		$submit = $this->addElement('submit', 'submit', array('label' => 'Submit'));
+	$submit = $this->addElement('submit', 'submit', array('label' => 'Submit'));
     }
 
 

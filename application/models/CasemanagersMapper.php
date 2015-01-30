@@ -25,10 +25,13 @@ class Application_Model_CasemanagersMapper {
 	
 	public function save(Application_Model_Casemanagers $casemanagers) {
 		$data = array(
+                       /*
 			'firstName' => $casemanagers->getFirstName(),
 			'lastName' => $casemanagers->getLastName(),
 			'middleName' => $casemanagers->getMiddleName(),
 			'email' => $casemanagers->getEmail(),
+                       */
+                        'userID' => $casemanagers->getUserID(),
 			'createdBy' => $casemanagers->getCreatedBy(),
 			'updatedBy' => $casemanagers->getUpdatedBy(),
 			'createdDate' => $casemanagers->getCreatedDate(),
@@ -43,7 +46,7 @@ class Application_Model_CasemanagersMapper {
 		}
 		else {
 			$data['updatedDate'] = date('Y-m-d H:i:s');
-			$data['updatedBy'] = $followup->getUpdatedBy();
+			$data['updatedBy'] = $casemanagers->getUpdatedBy();
 			$this->getDbTable()->update($data, array('id = ?' => $id));
 		}
 		return $id;
@@ -56,10 +59,12 @@ class Application_Model_CasemanagersMapper {
 		}
 		$row = $result->current();
 		$casemanagers->setId($row->id)
-					 ->setFisrtName($row->firstName)
+				    /*	 ->setFisrtName($row->firstName)
 					 ->setMiddleName($row->middleName)
 					 ->setLastName($row->lastName)
 					 ->setEmail($row->email)
+                                    */
+                                         ->setUserID($row->userID)
 					 ->setCreatedBy($row->createdBy)
 					 ->setUpdatedBy($row->updatedBy)
 					 ->setCreatedDate($row->createdDate)
@@ -72,10 +77,12 @@ class Application_Model_CasemanagersMapper {
 		foreach ($resultSet as $row){
 			$entry = new Application_Model_Casemanagers();
 			$entry->setId($row->id)
-				  ->setFirstName($row->firstName)
+				/*  ->setFirstName($row->firstName)
 				  ->setMiddleName($row->middleName)
 				  ->setLastName($row->lastName)
 				  ->setEmail($row->email)
+                                */
+                                  ->setUserID($row->userID)
 				  ->setCreatedBy($row->createdBy)
 				  ->setUpdatedBy($row->updatedBy)
 				  ->setCreatedDate($row->createdDate)
@@ -84,5 +91,7 @@ class Application_Model_CasemanagersMapper {
 		}
 		return $entries;
 	}
+        
+        
 }
 ?>

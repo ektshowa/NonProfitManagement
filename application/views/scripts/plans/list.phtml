@@ -1,5 +1,7 @@
 <h2>Current Plans</h2>
-<?php if($this->entries != null) {?>
+<?php 
+   if($this->entries){
+?>
 <table class='spreadsheet' cellpadding='0' cellspacing='0'>
 	<tr>
 		<th>Plan Name</th>
@@ -7,24 +9,60 @@
 	</tr>
 	<?php 
 		foreach ($this->entries as $entry):
-	?>
+        ?>
 	<tr>
 	<td class="links">
-		<a href='/plans/update/id/<?php echo $this->escape($entry->id);?>'>Edit</a>
-		<a href='/plans/delete/id/<?php echo $this->escape($entry->id);?>'>Delete</a>
+		<a href='/plans/update/id/<?php echo $this->escape($entry["id"]);?>'>Edit</a>
+		<a href='/plans/delete/id/<?php echo $this->escape($entry["id"]);?>'>Delete</a>
 	</td>
 	<td><?php 
-			echo $this->escape($entry->planName)
+			echo $this->escape($entry["planName"])
 		?>
 	</td>
 	<td><?php
-			echo $this->escape($entry->description) 
+			echo $this->escape($entry["description"]) 
 		?>
 	</td>
 </tr>
 <?php endforeach ?>
 </table>
+    <?php
+         
+        if($this->firstService) {
+    ?>
+        <h3>Service Details</h3>
+        <table>
+        <tr>
+            <th>Service Code</th>
+            <th>Service Category</th>
+            <th>Description</th>
+            <th>Plan ID</th>
+        </tr>
+        <tr>
+            <td><?php 
+			echo $this->escape($this->firstService['serviceCode']);
+		?>
+            </td>
+            <td><?php
+                        echo $this->escape($this->firstService['serviceCategory']); 
+		?>
+            </td>
+            <td><?php
+			echo $this->escape($this->firstService['description']); 
+		?>
+            </td>
+            <td><?php
+			echo $this->escape($this->firstService['planId']); 
+		?>
+            </td>
+        </table>
+    <?php
+        }
+        else {
+    ?> 
+      <p>There is no service to display for this plan.</p>  
+      <?php  } ?>
 <?php } else {?>
-<p>There is not any plan.</p>
+<p>There is no plan to display.</p>
 <?php }?>
 <p><a href='/plans/create'>Create a new plan</a></p>

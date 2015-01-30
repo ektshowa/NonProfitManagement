@@ -10,7 +10,7 @@ class Zend_View_Helper_LoadSkin extends Zend_View_Helper_Abstract {
 		// append each stylesheet
 		if (is_array($stylesheets)) {
 			foreach ($stylesheets as $stylesheet) {
-				$this->view->headLink()->appendStylesheet('/skins' . $skin . '/css' . $stylesheet);
+				$this->view->headLink()->appendStylesheet('/skins/' . $skin . '/css/' . $stylesheet);
 			}
 		}
 	}

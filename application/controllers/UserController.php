@@ -30,7 +30,7 @@ class UserController extends Zend_Controller_Action
         		$users = new Application_Model_UsersMapper();
         		$newUser = new Application_Model_Users();
         		$newUser->setEmail($userForm->getValue('email'));
-                        $newUser->setRole($userForm->getValue('role'));
+                        $newUser->setRoleId($userForm->getValue('roleId'));
         		$newUser->setFirstName($userForm->getValue('firstName'));
         		$newUser->setLastName($userForm->getValue('lastName'));
         		$newUser->setMiddleName($userForm->getValue('middleName'));
@@ -74,27 +74,13 @@ class UserController extends Zend_Controller_Action
         
         $users = new Application_Model_UsersMapper();
         
-        if ($this->_request->isPost()){
+        //Get the id value from the form 
+        $id = $this->_request->getParam('id');
         	
-        	if ($userForm->isValid($_POST)){
-        		$usersModel->setFisrtName($userForm->getValue('firstName'));
-        		$usersModel->setLastName($userForm->getValue('lastName'));
-        		$usersModel->setMiddleName($userForm->getValue('middleName'));
-        		$usersModel->setEmail($userForm->getValue('email'));
-        		$usersModel->setUsername($userForm->getValue('username'));
-        		$usersModel->setId($userForm->getValue('id'));
-        		$users->save($usersModel);
-        		return $this->_forward('list');
-        	}
-        }
-        else {
-        	//Get the id value from the form 
-        	$id = $this->_request->getParam('id');
-        	
-        	// Find the row and populate the form
-        	$currentUser = $users->find($id, $usersModel);
-        	$userForm->populate($currentUser->toArray());	
-        }
+        // Find the row and populate the form
+        $currentUser = $users->find($id, $usersModel);
+        $userForm->populate($currentUser->toArray());	
+        
         $this->view->form = $userForm; 
     }
 
@@ -143,6 +129,9 @@ class UserController extends Zend_Controller_Action
         $userForm->removeElement('lastName');
         $userForm->removeElement('email');
         $userForm->removeElement('middleName');
+        $userForm->removeElement('passwordConfirm');
+        $userForm->removeElement('roleId');
+        
         if ($this->_request->isPost() && $userForm->isValid($_POST)){
         	$data = $userForm->getValues();
         	//set up the auth adapter. get the default db adapter 
@@ -188,7 +177,7 @@ class UserController extends Zend_Controller_Action
         		$auth = Zend_Auth::getInstance();
         		$storage = $auth->getStorage();
         		$storage->write($authAdapter->getResultRowObject( 
-        				array('username', 'firstName', 'lastName', 'email', 'role')));
+        				array('username', 'firstName', 'lastName', 'email', 'roleId')));
         			
         		//$this->view->storedIdentity = $storage;
         				

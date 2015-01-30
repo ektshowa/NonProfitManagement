@@ -31,10 +31,21 @@ class PlansController extends Zend_Controller_Action
         $this->view->form = $planForm;    	
     }
 
-    public function listAction()
-    {
-    	$plans = new Application_Model_PlansMapper();  
-        $this->view->entries = $plans->fetchAll();
+    public function listAction(){
+    	$plans = new Application_Model_PlansMapper(); 
+        $service = new Application_Model_ServicesMapper();
+        $entries = $plans->fetchAll(TRUE);
+        $this->view->entries = $entries;
+        $firstPlanID = $entries[0]['id'];
+        
+        $firstService = $service->fetchServicesPerPlan($firstPlanID, array('column'=>'id', 'mode'=>'ASC'), 1);
+        if ($firstService){
+          $this->view->firstService = $firstService[0];  
+        }
+        else {
+            $this->view->firstService = FALSE;
+        }
+        
     }
 
     public function updateAction()

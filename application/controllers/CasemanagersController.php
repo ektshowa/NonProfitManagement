@@ -20,14 +20,28 @@ class CasemanagersController extends Zend_Controller_Action
         	if ($casemanagerForm->isValid($_POST)){
         		$casemanagers = new Application_Model_CasemanagersMapper();
         		$newCasemanager = new Application_Model_Casemanagers();
-        		$newCasemanager->setEmail($casemanagerForm->getValue('email'));
+                        $newUser = new Application_Model_Users();
+                        $user = new Application_Model_UsersMapper();
+                        $email = $casemanagerForm->getValue('email');
+                        $emailParts = explode("@",$email);
+                        $username = $emailParts[0];
+                        $newUser->setEmail($email);
+                        $newUser->setFirstName($casemanagerForm->getValue('firstName'));
+                        $newUser->setLastName($casemanagerForm->getValue('lastName'));
+                        $newUser->setMiddleName($casemanagerForm->getValue('middleName'));
+                        $newUser->setRole("casemanager");
+                        $newUser->setUsername($username);
+                        $newUserID = $user->save($newUser);
+                        
+                        $newCasemanager->setUserID($newUserID);
+        		$casemanagers->save($newCasemanager);
+                        
+                    /*	$newUser->setEmail($casemanagerForm->getValue('email'));
         		$newCasemanager->setFirstName($casemanagerForm->getValue('firstName'));
         		$newCasemanager->setLastName($casemanagerForm->getValue('lastName'));
         		$newCasemanager->setMiddleName($casemanagerForm->getValue('middleName'));
-        		
-        		var_dump($newCasemanager);
-        		
-        		$casemanagers->save($newCasemanager);
+                    */
+                        //$userID = $casemanagerForm->getValue('userID');          
         	}
         }
         
@@ -59,11 +73,13 @@ class CasemanagersController extends Zend_Controller_Action
         if ($this->_request->isPost()){
         	
         	if ($casemanagerForm->isValid($_POST)){
-        		$casemanagersModel->setFisrtName($casemanagerForm->getValue('firstName'));
+        		/*$casemanagersModel->setFisrtName($casemanagerForm->getValue('firstName'));
         		$casemanagersModel->setLastName($casemanagerForm->getValue('lastName'));
         		$casemanagersModel->setMiddleName($casemanagerForm->getValue('middleName'));
         		$casemanagersModel->setEmail($casemanagerForm->getValue('email'));
+                        */
         		$casemanagersModel->setId($casemanagerForm->getValue('id'));
+                        $casemanagersModel->setUserID($casemanagerForm->getValue('userID'));
         		$casemanagers->save($casemanagersModel);
         		return $this->_forward('list');
         	}

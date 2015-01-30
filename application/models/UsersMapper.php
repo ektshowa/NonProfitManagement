@@ -23,18 +23,26 @@ class Application_Model_UsersMapper {
 	}
 	
 	public function save(Application_Model_Users $users) {
+                $firstname = $users->getFirstName();
+                $lastname = $users->getLastName();
+                $username = strtoupper(substr($firstname, 0, 1)) . ucfirst($lastname);
+                
+            
 		$data = array(
-			'firstName' => $users->getFirstName(),
-			'lastName' => $users->getLastName(),
+			'firstName' => $firstname,
+			'lastName' => $lastname,
 			'middleName' => $users->getMiddleName(),
-			'username' => $users->getUsername(),
+			'username' => $username,
 			'email' => $users->getEmail(),
-                        'role' => $users->getRole()
+                        'roleId' => $users->getRoleId()
 		);
 		if (null === ($id = $users->getId())) {
 			unset($data['id']);
+			
+                        if (is_null($users->getPassword()))
+                            return false;
+                        
 			$data['password'] = md5($users->getPassword());
-			//$data['password'] = $users->getPassword();
 			$data['createdDate'] = date('Y-m-d H:i:s');
 			$data['createdBy'] = $users->getCreatedBy();
 			$this->getDbTable()->insert($data);
@@ -52,7 +60,7 @@ class Application_Model_UsersMapper {
 	public function find($id, Application_Model_Users $users){
 		$result = $this->getDbTable()->find($id);
 		if (0 == count($result)){
-			return ;
+			return FALSE;
 		}
 		$row = $result->current();
 		$users->setId($row->id)

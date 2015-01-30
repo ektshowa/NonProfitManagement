@@ -84,11 +84,11 @@ class Application_Model_Users {
 	public function getEmail(){
 		return $this->_email;
 	}
-        public function setRole($role){
-		$this->_role = (string) $role;
+        public function setRoleId($roleId){
+		$this->_role = (string) $roleId;
 		return $this;
 	}
-	public function getRole(){
+	public function getRoleId(){
 		return $this->_role;
 	}
 	public function setPassword($password){

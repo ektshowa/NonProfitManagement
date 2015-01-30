@@ -1,11 +1,13 @@
 <?php
 
 class Application_Model_Casemanagers {
-	protected $_firstName;
+/*	protected $_firstName;
 	protected $_lastName;
 	protected $_middleName;
 	protected $_email;
-	protected $_createdDate;
+ */
+        protected $_userID;
+        protected $_createdDate;
 	protected $_updatedDate;
 	protected $_createdBy;
 	protected $_updatedBy;
@@ -43,7 +45,7 @@ class Application_Model_Casemanagers {
 		}
 		return $this;
 	}
-	
+/*	
 	public function setFirstName($firstName){
 		$this->_firstName = (string) $firstName;
 		return $this;
@@ -74,6 +76,14 @@ class Application_Model_Casemanagers {
 	public function getEmail(){
 		return $this->_email;
 	}
+ */
+        public function getUserID(){
+            return $this->_userID;
+        }
+        public function setUserID($userID){
+            $this->_userID = (int) $userID;
+            return $this;
+        }
 	public function getCreatedBy(){
 		return $this->_createdBy;
 	} 

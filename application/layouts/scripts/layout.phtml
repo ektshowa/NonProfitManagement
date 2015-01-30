@@ -8,12 +8,16 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<?php 
-			echo $this->headTitle();
-			echo $this->headScript();
-			$this->headLink()->appendStylesheet('/css/menuStyle.css');
+			
+                        echo $this->headTitle();
+			$this->headLink()->appendStylesheet('/bootstrap-3.3.2/css/bootstrap.min.css');
+                        $this->headLink()->appendStylesheet('/css/menuStyle.css');
 			$this->headLink()->appendStylesheet('/css/layout.css');
-			//$this->loadSkin($this->skin);
-			echo $this->headLink();
+                        $this->headScript()->appendFile('/bootstrap-3.3.2/js/bootstrap.min.js');
+                        
+                        //$this->loadSkin($this->skin);
+                        echo $this->headScript();
+                        echo $this->headLink();
 		?>
     	<?php echo $this->jQuery(); ?>
 		

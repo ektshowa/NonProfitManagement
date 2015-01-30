@@ -61,22 +61,65 @@ class Application_Model_PlansMapper {
 			  ->setUpdatedDate($row->updatedDate);
 		return $plans;
 	}				
-	public function fetchAll(){
-		$resultSet = $this->getDbTable()->fetchAll();
-		$entries   = array();
-		foreach ($resultSet as $row){
-			$entry = new Application_Model_Plans();
-			$entry->setId($row->id)
-				  ->setPlanName($row->planName)
-				  ->setDescription($row->description)
-				  ->setCreatedBy($row->createdBy)
-				  ->setUpdatedBy($row->updatedBy)
-				  ->setCreatedDate($row->createdDate)
-				  ->setUpdatedDate($row->updatedDate);
-			$entries[] = $entry;
+	public function fetchAll($defaultAdapter = FALSE, $where = NULL, $order = array("column"=>null,"mode"=>null), $limit = null){
+		if ($defaultAdapter){
+                    $db = $this->getAdapter();
+                    $sql = 'SELECT * FROM plans ';
+                    if (!is_null($where))
+                    {
+                        $sql .= $where;
+                    }
+                    if (!is_null($order["column"]))
+                    {
+                        $sql .= " ORDER BY " . $order['column'] ;
+                    }
+                    if (!is_null($order["mode"]))
+                    {
+                        $sql .= " " . $order['column'] ;
+                    }
+                    if (!is_null($limit))
+                    {
+                        $sql .= " LIMIT " . $limit;
+                    }
+                    $smt = $db->query($sql);
+                    if ($smt instanceof Zend_Db_Statement_Interface) {
+                        $plans = $smt->fetchAll();
+                    }
+                    else {
+                        return FALSE;
+                    }
+                    if (is_array($plans)){
+                        $plans = (count($plans) > 0) ? $plans : FALSE;
+                        return $plans;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                else {
+                    $resultSet = $this->getDbTable()->fetchAll($where = NULL);
+                    if ($resultSet instanceof Zend_Db_Table_Rowset_Abstract) {
+                        $entries   = array();
+                            foreach ($resultSet as $row){
+                                $entry = new Application_Model_Plans();
+                                $entry->setId($row->id)
+                                    ->setPlanName($row->planName)
+                                    ->setDescription($row->description)
+                                    ->setCreatedBy($row->createdBy)
+                                    ->setUpdatedBy($row->updatedBy)
+                                    ->setCreatedDate($row->createdDate)
+                                    ->setUpdatedDate($row->updatedDate);
+                                $entries[] = $entry;
+                            }
+                        if (! count($entries) > 0)
+                        {
+                            return FALSE;
+                        }
+                        return $entries;
+                    }
+                    return FALSE;
 		}
-		return $entries;
-	}
+ 	}
 	public function fetchAPlan($planName){
     	//Get the default adapter
 		$db = $this->getAdapter();
@@ -100,5 +143,6 @@ class Application_Model_PlansMapper {
     	$services = $stmt->fetchAll();
 		return $services;
     }
+        
 }
-?>
+

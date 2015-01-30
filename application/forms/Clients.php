@@ -18,14 +18,34 @@ class Application_Form_Clients extends ZendX_JQuery_Form
     	$firstName = $this->createElement('text', 'firstName');
     	$firstName->setLabel('First Name:');
     	$firstName->setRequired(TRUE);
-    	$firstName->setAttrib('size', 50);
+        $firstName->setDecorators(array(
+            'ViewHelper',
+            'Errors',
+            array('Label'),
+            array(
+                  array('row' => 'HtmlTag'),
+                array('tag' => 'div', 'class' => 'form-group')
+            )
+        ));
+    	//$firstName->setAttrib('size', 50);
+        $firstName->setAttrib('class', 'form-control');
     	$this->addElement($firstName);
     	
     	/* Last name textbox element */
     	$lastName = $this->createElement('text', 'lastName');
     	$lastName->setLabel('Last Name:');
     	$lastName->setRequired(TRUE);
-    	$lastName->setAttrib('size', 50);
+      	//$lastName->setAttrib('size', 50);
+        $lastName->setDecorators(array(
+            'ViewHelper',
+            'Errors',
+            array('Label'),
+            array(
+                  array('row' => 'HtmlTag'),
+                  array('tag' => 'div', 'class' => 'form-group')
+            )
+        ));
+        $lastName->setAttrib('class', 'form-control');
     	$this->addElement($lastName);
     	
     	/* Middle Name textbox element not required*/
@@ -59,8 +79,19 @@ class Application_Form_Clients extends ZendX_JQuery_Form
     	$gender->setLabel('Gender:');
     	$gender->setRequired(TRUE);
     	$gender->addMultiOptions(array(
+                        '' =>  'Choose the gender',
     			'M' => 'Male',
     			'F' => 'Female'));
+        $gender->setDecorators(array(
+            'ViewHelper',
+            'Errors',
+            array('Label'),
+            array(
+                  array('row' => 'HtmlTag'),
+                array('tag' => 'div', 'class' => 'form-group')
+            )
+        ));
+        $gender->setAttrib('class', 'form-control');
     	$this->addElement($gender);
     	
     	/* LanguageSpoken textbox required */

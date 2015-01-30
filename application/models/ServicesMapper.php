@@ -66,8 +66,8 @@ class Application_Model_ServicesMapper {
 			  ->setUpdatedDate($row->updatedDate);
 		return $service;
 	}				
-	public function fetchAll(){
-		$resultSet = $this->getDbTable()->fetchAll();
+	public function fetchAll($where = NULL, $order = null, $count = null, $offset = null){
+		$resultSet = $this->getDbTable()->fetchAll($where = NULL, $order = null, $count = null, $offset = null);
 		$entries   = array();
 		foreach ($resultSet as $row){
 			$entry = new Application_Model_Services();
@@ -132,9 +132,21 @@ class Application_Model_ServicesMapper {
      	
 		return $result;
 	}
-        public function fetchServicesPerPlan($planId){
+        public function fetchServicesPerPlan($planId, $order = array("column"=>null,"mode"=>null), $limit=NULL){
                 $db = $this->getAdapter();
-                $sql = 'SELECT * FROM services WHERE planId=?'; 
+                $sql = 'SELECT * FROM services WHERE planId=? ';
+                if (!is_null($order['column']))
+                {
+                    $sql .= " ORDER BY " . $order['column'];
+                }
+                if (!is_null($order['mode']))
+                {
+                    $sql .= " " .$order['mode'];
+                }
+                if (!is_null($limit))
+                {
+                    $sql .= " LIMIT " . $limit;
+                }
                 $smt = $db->query($sql,$planId);
                 
                 $services = $smt->fetchAll();
@@ -143,8 +155,7 @@ class Application_Model_ServicesMapper {
                 }
                 else{
                     return false;
-                }
-                
+                }        
         }    
 	public function fetchAService($serviceCode){
     	//Get the default adapter

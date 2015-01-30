@@ -1,5 +1,7 @@
+<script>
+    
+</script>    
 <?php
-
 class Application_Form_User extends ZendX_JQuery_Form
 {
 
@@ -13,18 +15,6 @@ class Application_Form_User extends ZendX_JQuery_Form
         $id->setDecorators(array('ViewHelper'));
         // add the element to the form
         $this->addElement($id);
-        
-        $username = $this->createElement('text', 'username');
-        $username->setLabel('Username: ');
-        $username->setRequired('true');
-        $username->addFilter('stripTags');
-        $username->addErrorMessage('The username is required');
-        $this->addElement($username);
-        
-        $password = $this->createElement('password', 'password');
-        $password->setLabel('Password: ');
-        $password->setRequired('true');
-        $this->addElement($password);
         
         $firstName = $this->createElement('text', 'firstName');
         $firstName->setLabel('First Name: ');
@@ -48,13 +38,33 @@ class Application_Form_User extends ZendX_JQuery_Form
     	$email->setAttrib('size', 70);
     	$this->addElement($email);
         
-        $role = $this->createElement('select', 'role');
+        $password = $this->createElement('password', 'password');
+        $password->setLabel('Password: ');
+        $password->setRequired('true');
+        $this->addElement($password);
+        
+        $passwordConfirm = $this->createElement('password', 'passwordConfirm');
+        $passwordConfirm->setLabel('Password Confirm: ');
+        $passwordConfirm->setRequired('true');
+       // $passwordConfirm->addPrefixPath("ManageNonProfit_Validate", "ManageNonProfit/Validate", "validate");
+       // $passwordConfirm->addValidator(new Application_ManageNonProfit_Validate_PasswordConfirm());
+        $this->addElement($passwordConfirm);
+        
+        $role = $this->createElement('select', 'roleId');
         $role->setLabel('Select a role: ');
-        $role->addMultiOption('User', 'user');
-        $role->addMultiOption('Administrator', 'administrator');
+        $role->addMultiOption(4, 'User');
+        $role->addMultiOption(3, 'Case Manager');
+        $role->addMultiOption(2, 'Administrator');
+        $role->addMultiOption(1, 'System Administrator');
         $role->setRequired('true');
         $this->addElement($role);
-    	
+        
+        // The Username is generated with concatanation of the first letter of firstName
+        // and lastName
+        $username = $this->createElement('text', 'username');
+        $username->setLabel('Username: ');
+        $this->addElement($username);
+        
     	/* Created Date hidden field */
     	$this->addElement('hidden', 'createdDate', array(
         				)
@@ -75,7 +85,7 @@ class Application_Form_User extends ZendX_JQuery_Form
         				)
 		);
 		
-		$submit = $this->addElement('submit', 'submit', array('label' => 'Submit'));
+	$submit = $this->addElement('submit', 'submit', array('label' => 'Submit'));
         
     }
 
